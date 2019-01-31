@@ -51,7 +51,7 @@ export const Card: React.SFC<Props> = ({
             <ButtonIcon onClick={() => {
                 handleUnlike(data.uuid);
             }}>
-                <Icon icon={thumbsODown} size={32}/>
+                <Icon icon={thumbsODown} size={32} />
                 {data.unlike}
             </ButtonIcon>
         </FotterButton>
