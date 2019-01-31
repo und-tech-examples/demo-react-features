@@ -1,3 +1,4 @@
+
 export interface UserModel {
     name: string;
     email: string;
@@ -7,4 +8,8 @@ export interface UserModel {
     like: number;
     unlike: number;
     uuid: string;
+}
+
+export interface UserListModel {
+    [key: string]: UserModel;
 }

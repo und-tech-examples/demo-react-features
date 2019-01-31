@@ -1,8 +1,8 @@
-import { UserModel } from '../../model/UserModel';
+import { UserListModel } from '../../model/UserModel';
 import { UserServiceModel } from '../../model/UserServiceModel';
 
-export const hydrateUser = (data: UserServiceModel): any => {
-    let newData = {};
+export const hydrateUserList = (data: UserServiceModel): UserListModel => {
+    let newData = {} as UserListModel;
     data.results.forEach(data => {
         newData[data.login.uuid] = {
             uuid: data.login.uuid,

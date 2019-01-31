@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { UserModel } from '../../model/UserModel';
-import { hydrateUser } from './hydrators';
+import { UserListModel } from '../../model/UserModel';
+import { hydrateUserList } from './hydrators';
 
 export const serviceUser = {
-    async get(): Promise<Array<UserModel>> {
+    async get(): Promise<UserListModel> {
         try {
             const { data } = await axios.get('https://randomuser.me/api/?results=6');
-            return hydrateUser(data);
+            return hydrateUserList(data);
         } catch (e) {
             throw Error();
         }

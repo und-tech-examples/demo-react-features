@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { userSelect } from '../../../CardUser';
+import { selectUser } from '../../../userList';
 import { Header } from './Header';
 
 const mapStateToProps = state => ({
-    totalFollowing: userSelect.getTotalFollowing(state)
+    totalFollowing: selectUser.getTotalFollowing(state)
 });
 
 export const HeaderContainer = connect(

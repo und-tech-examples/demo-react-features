@@ -2,6 +2,8 @@ import * as React from 'react';
 import Icon from 'react-icons-kit';
 import { thumbsOUp } from 'react-icons-kit/fa/thumbsOUp'
 import { thumbsODown } from 'react-icons-kit/fa/thumbsODown'
+import { UserModel } from '../../model/UserModel';
+
 import {
     Wrapper,
     Avatar,
@@ -14,49 +16,49 @@ import {
 } from './styled';
 
 interface Props {
-    name?: string;
-    email?: string;
-    phone?: string;
-    picture?: string;
-    following?: boolean;
     handleFollow?: Function;
     handleLike?: Function;
     handleUnlike?: Function;
-    like?: number;
-    unlike?: number;
-    index?: number;
-    data?: any;
+    user?: UserModel;
 }
 
 export const Card: React.SFC<Props> = ({
-    data,
+    user: {
+        name,
+        email,
+        phone,
+        uuid,
+        picture,
+        like,
+        unlike,
+        following
+    },
     handleLike,
     handleFollow,
     handleUnlike
 }) => (
     <Wrapper>
-        <Avatar src={data.picture} />
+        <Avatar src={picture} />
         <Line />
-        <Title>{data.name}</Title>
-        <Subtitle>{data.email}</Subtitle>
-        <Subtitle>{data.phone}</Subtitle>
+        <Title>{name}</Title>
+        <Subtitle>{email}</Subtitle>
+        <Subtitle>{phone}</Subtitle>
         <FotterButton>
             <ButtonIcon onClick={() => {
-                console.log('index', data.uuid);
-                handleLike(data.uuid);
+                handleLike(uuid);
             }}>
                 <Icon icon={thumbsOUp} size={32} style={{color: '#465572'}} />
-                {data.like}
+                {like}
             </ButtonIcon>
             <ButtonIcon onClick={() => {
-                handleUnlike(data.uuid);
+                handleUnlike(uuid);
             }}>
                 <Icon icon={thumbsODown} size={32} />
-                {data.unlike}
+                {unlike}
             </ButtonIcon>
         </FotterButton>
-        <ButtonFollow following={data.following} onClick={() => {
-            handleFollow(data.uuid);
-        }}>{data.following ? 'FOLLOWING' : 'FOLLOW' }</ButtonFollow>
+        <ButtonFollow following={following} onClick={() => {
+            handleFollow(uuid);
+        }}>{following ? 'FOLLOWING' : 'FOLLOW' }</ButtonFollow>
     </Wrapper>
 )

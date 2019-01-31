@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Wrapper } from './styled';
 import { CardContainer } from '../Card';
+import { UserListModel } from '../../model/UserModel';
 
 interface Props {
-    data?: any;
+    data?: UserListModel;
 }
 
-export const CardList: React.SFC<Props> = ({data}) => (
+export const CardList: React.SFC<Props> = ({ data }) => (
     <Wrapper>
         {Object.keys(data).map((key) => (
             <CardContainer
